@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/LouisFernando1204/yuccAI-backend/controllers"
+	"github.com/LouisFernando1204/yuccAI-backend/controller"
 	"github.com/gofiber/fiber/v2"
 )
 

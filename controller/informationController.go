@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/LouisFernando1204/yuccAI-backend/database"
-	"github.com/LouisFernando1204/yuccAI-backend/errors"
+	"github.com/LouisFernando1204/yuccAI-backend/error"
 	"github.com/LouisFernando1204/yuccAI-backend/model"
 	"github.com/gofiber/fiber/v2"
 	"go.mongodb.org/mongo-driver/bson"
