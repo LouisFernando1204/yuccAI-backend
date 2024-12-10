@@ -30,5 +30,5 @@ func main() {
 	router.SetUp(app)
 
 	// run on local server
-	log.Fatal(app.Listen(":8080"));
+	log.Fatal(app.Listen(":3000"));
 }
