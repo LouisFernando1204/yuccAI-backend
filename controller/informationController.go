@@ -22,14 +22,14 @@ func AddInformation(c *fiber.Ctx) error {
 	var information model.Information
 	err := c.BodyParser(&information)
 	if err != nil {
-		return errors.GetError(c, "Error while parsing data.")
+		return errors.GetError(c, err.Error())
 	}
 
 	// try to insert new document into database
 	collection := database.GetDatabase().Collection("information")
 	result, err := collection.InsertOne(ctx, information)
 	if err != nil {
-		return errors.GetError(c, "Error while add new information.")
+		return errors.GetError(c, err.Error())
 	}
 
 	// it will return JSON response with a status code of 200 (OK) and the result data
@@ -49,7 +49,7 @@ func GetAllInformation(c *fiber.Ctx) error {
 	collection := database.GetDatabase().Collection("information")
 	cursor, err := collection.Find(ctx, bson.M{})
 	if err != nil {
-		return errors.GetError(c, "Error while fetch informations.")
+		return errors.GetError(c, err.Error())
 	}
 
 	// ensure the cursor is closed once the operation is finished
@@ -58,7 +58,7 @@ func GetAllInformation(c *fiber.Ctx) error {
 	// decode the results into the 'informations' slice
 	err = cursor.All(ctx, &informations)
 	if err != nil {
-		return errors.GetError(c, "Error while decoding data.")
+		return errors.GetError(c, err.Error())
 	}
 
 	// it will return JSON response with a status code of 200 (OK) and the result data
