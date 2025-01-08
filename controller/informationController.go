@@ -32,7 +32,7 @@ func AddInformation(c *fiber.Ctx) error {
 		return errors.GetError(c, err.Error())
 	}
 
-	// it will return JSON response with a status code of 200 (OK) and the result data
+	// it will return JSON response 
 	return c.Status(fiber.StatusOK).JSON(result)
 }
 
@@ -61,6 +61,6 @@ func GetAllInformation(c *fiber.Ctx) error {
 		return errors.GetError(c, err.Error())
 	}
 
-	// it will return JSON response with a status code of 200 (OK) and the result data
+	// it will return JSON response 
 	return c.Status(fiber.StatusOK).JSON(informations)
 }
