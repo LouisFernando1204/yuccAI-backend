@@ -20,10 +20,18 @@ func main() {
 	// after the `main` function finished executing, it will start to disconnect the database
 	defer database.DisconnectDatabase()
 
-	// handle CORS error
+	// // handle CORS error
+	// app.Use(cors.New(cors.Config{
+	// 	AllowOrigins: "https://0bf8-139-0-80-240.ngrok-free.app/",
+	// 	AllowMethods: "*",
+	// 	AllowHeaders: "*",
+	// 	AllowCredentials: true,
+	// }))
+
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
-		AllowHeaders: "Origin, Content-Type, Accept",
+		AllowMethods: "GET,POST",
+		AllowHeaders: "*",
 	}))
 
 	// handle set up router

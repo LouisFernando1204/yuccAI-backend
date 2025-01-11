@@ -7,6 +7,7 @@ import (
 	"github.com/LouisFernando1204/yuccAI-backend/database"
 	"github.com/LouisFernando1204/yuccAI-backend/error"
 	"github.com/LouisFernando1204/yuccAI-backend/model"
+	"github.com/LouisFernando1204/yuccAI-backend/validator"
 	"github.com/gofiber/fiber/v2"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -21,6 +22,12 @@ func AddInformation(c *fiber.Ctx) error {
 	// parse the request body to 'information' struct
 	var information model.Information
 	err := c.BodyParser(&information)
+	if err != nil {
+		return errors.GetError(c, err.Error())
+	}
+
+	// try to validate struct content
+	err = validator.Validate.Struct(information)
 	if err != nil {
 		return errors.GetError(c, err.Error())
 	}
